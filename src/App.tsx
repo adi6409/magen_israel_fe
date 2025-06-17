@@ -121,6 +121,7 @@ export default function App() {
           <div className="last-update">עדכון אחרון: {lastUpdate || '--:--'}</div>
           <button className="location" onClick={() => setZoneModalOpen(true)}>
             📍 אזור: {selectedZone}
+            <span className="chevron">▼</span>
           </button>
           {instructions && (
             <div className="dashboard-instructions">{instructions}</div>

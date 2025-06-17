@@ -514,11 +514,30 @@ body, html, #root, .dashboard-root {
   font-size: 14px;
   color: #333;
   font-weight: 600;
-  background: none;
-  border: none;
+  background: #f0f4fa;
+  border: 1.5px solid #b0bec5;
+  border-radius: 20px;
   cursor: pointer;
-  padding: 0;
+  padding: 8px 18px 8px 12px;
   margin-bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, box-shadow 0.2s, border 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  outline: none;
+}
+.location:hover, .location:focus {
+  background: #e3f2fd;
+  border-color: #90caf9;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
+  text-decoration: underline;
+}
+.location .chevron {
+  font-size: 1.1em;
+  margin-left: 2px;
+  color: #1976d2;
+  pointer-events: none;
 }
 .dashboard-instructions {
   margin-top: 12px;
