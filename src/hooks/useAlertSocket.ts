@@ -12,12 +12,23 @@ export type Alert = {
 export function useAlertSocket(selectedZone: string) {
   const [alert, setAlert] = useState<Alert | null>(null);
   const [lastUpdate, setLastUpdate] = useState<string | null>(null);
+  const [isConnected, setIsConnected] = useState<boolean>(false);
   const alertsCache = useRef<Record<string, Alert>>({});
 
   useEffect(() => {
     const socket: Socket = io(SOCKET_URL, {
       path: '/api/ws',
       transports: ['websocket'],
+    });
+
+    socket.on('connect', () => setIsConnected(true));
+    socket.on('disconnect', () => setIsConnected(false));
+
+    // Update lastUpdate on any message from the server (including keepalives)
+    socket.onAny((_event, ..._args) => {
+      if (socket.connected) {
+        setLastUpdate(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+      }
     });
 
     socket.on('all-latest-alerts', (allAlerts: Record<string, Alert>) => {
@@ -56,5 +67,5 @@ export function useAlertSocket(selectedZone: string) {
     }
   }, [selectedZone]);
 
-  return { alert, lastUpdate };
+  return { alert, lastUpdate, isConnected };
 } 

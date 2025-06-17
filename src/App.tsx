@@ -45,7 +45,7 @@ export default function App() {
   const [selectedZone, setSelectedZone] = useState<string>(() => {
     return localStorage.getItem('selectedZone') || 'Jerusalem';
   });
-  const { alert, lastUpdate } = useAlertSocket(selectedZone);
+  const { alert, lastUpdate, isConnected } = useAlertSocket(selectedZone);
 
   // Persist selected zone
   const handleZoneSelect = (zone: string) => {
@@ -117,6 +117,22 @@ export default function App() {
             📍 אזור: {selectedZone}
             <span className="chevron">▼</span>
           </button>
+          <div className="connection-status" title={isConnected ? 'Connected' : 'Disconnected'}>
+            <span
+              style={{
+                display: 'inline-block',
+                width: 10,
+                height: 10,
+                borderRadius: '50%',
+                background: isConnected ? '#2ecc40' : '#ff4136',
+                marginRight: 6,
+                verticalAlign: 'middle',
+              }}
+            />
+            <span style={{ fontSize: 14, color: isConnected ? '#2ecc40' : '#ff4136' }}>
+              {isConnected ? 'מחובר' : 'מנותק'}
+            </span>
+          </div>
           {instructions && (
             <div className="dashboard-instructions">{instructions}</div>
           )}

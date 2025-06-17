@@ -460,6 +460,22 @@ body, html, #root, .dashboard-root {
   max-width: 480px;
   border-radius: 15px 15px 0 0;
 }
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+@media (min-width: 480px) {
+  .connection-status {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 16px;
+  }
+}
+
 .header h1 {
   font-size: 18px;
   font-weight: 600;
