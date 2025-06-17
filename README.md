@@ -29,7 +29,7 @@ npm run dev
 The app will be available at [http://localhost:5173](http://localhost:5173) by default.
 
 ### API/Backend Configuration
-- The frontend expects the backend to be running at `http://localhost:3000` (default).
+- The frontend expects the backend to be running at `http://localhost:3939` (default).
 - To change the backend URL, edit the `SOCKET_URL` in `src/hooks/useAlertSocket.ts`.
 - REST API and WebSocket requests are proxied via Vite config for local development.
 
