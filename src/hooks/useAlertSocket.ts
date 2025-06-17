@@ -3,7 +3,7 @@ import { io, Socket } from 'socket.io-client';
 
 // const SOCKET_URL = 'http://localhost:3000';
 // get the address of the host from the current url
-const SOCKET_URL = window.location.origin.split('://')[1].split(':')[0] + ':3000';
+const SOCKET_URL = "https://magen.astroianu.dev/api"
 
 export type Alert = {
   type: string;

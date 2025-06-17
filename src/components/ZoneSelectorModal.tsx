@@ -16,7 +16,7 @@ export const ZoneSelectorModal: React.FC<ZoneSelectorModalProps> = ({ open, onCl
   useEffect(() => {
     if (open) {
       setLoading(true);
-      axios.get('/zones')
+      axios.get("https://magen.astroianu.dev/api/zones")
         .then(res => {
           let data = res.data;
           // If the data is an array of objects, extract the name property
