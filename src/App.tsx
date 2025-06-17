@@ -51,6 +51,7 @@ export default function App() {
   const handleZoneSelect = (zone: string) => {
     setSelectedZone(zone);
     localStorage.setItem('selectedZone', zone);
+    window.location.reload(); // Reload so that the socket will be reconnected
   };
 
   const status: StatusType = useMemo(() => getStatusType(alert, selectedZone), [alert, selectedZone]);
@@ -94,13 +95,6 @@ export default function App() {
       return next;
     });
   };
-
-  // For mockup: use images if you want to display them, or keep SVGs for live
-  // const statusImages = {
-  //   ok: '/ref/all_is_good.png',
-  //   warning: '/ref/stay_near_protected_space.png',
-  //   danger: '/ref/stay_in_protected_space.png',
-  // };
 
   return (
     <div className="app-container">
