@@ -1,9 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 
-// const SOCKET_URL = 'http://localhost:3000';
-// get the address of the host from the current url
-const SOCKET_URL = "https://magen.astroianu.dev/api"
+const SOCKET_URL = "https://magen.astroianu.dev"
 
 export type Alert = {
   type: string;
@@ -17,8 +15,10 @@ export function useAlertSocket(selectedZone: string) {
   const alertsCache = useRef<Record<string, Alert>>({});
 
   useEffect(() => {
-    console.log('SOCKET_URL', SOCKET_URL);
-    const socket: Socket = io(SOCKET_URL, { transports: ['websocket'] });
+    const socket: Socket = io(SOCKET_URL, {
+      path: '/api/ws',
+      transports: ['websocket'],
+    });
 
     socket.on('all-latest-alerts', (allAlerts: Record<string, Alert>) => {
       alertsCache.current = allAlerts || {};
