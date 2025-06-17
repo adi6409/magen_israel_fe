@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { StatusIndicator, type StatusType } from './components/StatusIndicator';
 import { ZoneSelectorModal } from './components/ZoneSelectorModal';
 import { useAlertSocket } from './hooks/useAlertSocket';
