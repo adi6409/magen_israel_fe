@@ -6,12 +6,13 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/zones': 'http://localhost:3000',
-      '/socket.io': {
-        target: 'http://localhost:3000',
+      '/zones': 'http://localhost:3939',
+      '/ws': {
+        target: 'http://localhost:3939',
         ws: true,
       },
     },
+    host: true,
   },
   preview: {
     allowedHosts: ['magen.astroianu.dev'],
